@@ -1,5 +1,7 @@
 import React from "react";
-import Blockly, { Workspace, WorkspaceSvg } from "blockly";
+const Blockly = window.Blockly;
+const WorkspaceSvg = Blockly.WorkspaceSvg;
+const Workspace = Blockly.Workspace;
 import { UseBlocklyProps } from "./BlocklyWorkspaceProps";
 
 import debounce from "./debounce";
