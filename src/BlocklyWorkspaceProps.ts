@@ -1,5 +1,4 @@
-const Blockly = window.Blockly;
-const WorkspaceSvg = Blockly.WorkspaceSvg;
+import Blockly, { WorkspaceSvg } from "blockly";
 import { RefObject } from "react";
 
 export interface CommonBlocklyProps {

@@ -1,8 +1,9 @@
 import useBlocklyWorkspace from "./useBlocklyWorkspace";
 import BlocklyWorkspace from "./BlocklyWorkspace";
-const Blockly = window.Blockly;
-const WorkspaceSvg = Blockly.WorkspaceSvg;
-const Workspace = Blockly.Workspace;
+import Blockly from "blockly";
+declare const window: any;
+const WorkspaceSvg = window.Blockly.WorkspaceSvg;
+const Workspace = window.Blockly.Workspace;
 import ToolboxDefinition1 = Blockly.utils.toolbox.ToolboxDefinition;
 export type ToolboxDefinition = ToolboxDefinition1;
 export { BlocklyWorkspace, useBlocklyWorkspace };

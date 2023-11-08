@@ -1,10 +1,10 @@
 import React from "react";
-const Blockly = window.Blockly;
-const WorkspaceSvg = Blockly.WorkspaceSvg;
-const Workspace = Blockly.Workspace;
+import { Workspace, WorkspaceSvg } from "blockly";
 import { UseBlocklyProps } from "./BlocklyWorkspaceProps";
 
 import debounce from "./debounce";
+declare const window: any;
+const Blockly = window.Blockly;
 
 function importFromXml(
   xml: string,
