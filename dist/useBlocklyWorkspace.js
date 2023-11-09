@@ -64,7 +64,7 @@ var useBlocklyWorkspace = function (_a) {
         if (toolboxConfiguration && workspace && !(workspaceConfiguration === null || workspaceConfiguration === void 0 ? void 0 : workspaceConfiguration.readOnly)) {
             workspace.updateToolbox(toolboxConfiguration);
         }
-    }, [toolboxConfiguration, workspace, workspaceConfiguration]);
+    }, [toolboxConfiguration, workspaceConfiguration]);
     var onInjectRef = React.useRef(onInject);
     var onDisposeRef = React.useRef(onDispose);
     React.useEffect(function () {
