@@ -51,7 +51,8 @@ var useBlocklyWorkspace = function (_a) {
     var _c = React.useState(initialXml || null), xml = _c[0], setXml = _c[1];
     var _d = React.useState(initialJson || null), json = _d[0], setJson = _d[1];
     var _e = React.useState(false), didInitialImport = _e[0], setDidInitialImport = _e[1];
-    var _f = React.useState(false), didHandleNewWorkspace = _f[0], setDidHandleNewWorkspace = _f[1];
+    var _f = React.useState({}), currentToolboxConfiguration = _f[0], setCurrentToolboxConfiguration = _f[1];
+    var _g = React.useState(false), didHandleNewWorkspace = _g[0], setDidHandleNewWorkspace = _g[1];
     // we explicitly don't want to recreate the workspace when the configuration changes
     // so, we'll keep it in a ref and update as necessary in an effect hook
     var workspaceConfigurationRef = React.useRef(workspaceConfiguration);
@@ -60,10 +61,16 @@ var useBlocklyWorkspace = function (_a) {
     }, [workspaceConfiguration]);
     var toolboxConfigurationRef = React.useRef(toolboxConfiguration);
     React.useEffect(function () {
+        console.log("currentToolboxConfiguration: ", currentToolboxConfiguration);
+        console.log("toolboxConfiguration: ", toolboxConfiguration);
+        console.log("isEqual(currentToolboxConfiguration, toolboxConfiguration): ", JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration));
+        if (JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration))
+            return;
         toolboxConfigurationRef.current = toolboxConfiguration;
         if (toolboxConfiguration && workspace && !(workspaceConfiguration === null || workspaceConfiguration === void 0 ? void 0 : workspaceConfiguration.readOnly)) {
             workspace.updateToolbox(toolboxConfiguration);
         }
+        setCurrentToolboxConfiguration(toolboxConfiguration);
     }, [toolboxConfiguration, workspaceConfiguration]);
     var onInjectRef = React.useRef(onInject);
     var onDisposeRef = React.useRef(onDispose);

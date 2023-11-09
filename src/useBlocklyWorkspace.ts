@@ -61,6 +61,7 @@ const useBlocklyWorkspace = ({
   const [xml, setXml] = React.useState<string | null>(initialXml || null);
   const [json, setJson] = React.useState<object | null>(initialJson || null);
   const [didInitialImport, setDidInitialImport] = React.useState(false);
+  const [currentToolboxConfiguration, setCurrentToolboxConfiguration] = React.useState({});
   const [didHandleNewWorkspace, setDidHandleNewWorkspace] =
     React.useState(false);
 
@@ -73,10 +74,15 @@ const useBlocklyWorkspace = ({
 
   const toolboxConfigurationRef = React.useRef(toolboxConfiguration);
   React.useEffect(() => {
+    console.log("currentToolboxConfiguration: ", currentToolboxConfiguration);
+    console.log("toolboxConfiguration: ", toolboxConfiguration);
+    console.log("isEqual(currentToolboxConfiguration, toolboxConfiguration): ", JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration));
+    if (JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration)) return;
     toolboxConfigurationRef.current = toolboxConfiguration;
     if (toolboxConfiguration && workspace && !workspaceConfiguration?.readOnly) {
       workspace.updateToolbox(toolboxConfiguration);
     }
+    setCurrentToolboxConfiguration(toolboxConfiguration);
   }, [toolboxConfiguration, workspaceConfiguration]);
 
   const onInjectRef = React.useRef(onInject);
