@@ -77,8 +77,8 @@ const useBlocklyWorkspace = ({
     console.log("currentToolboxConfiguration: ", currentToolboxConfiguration);
     console.log("toolboxConfiguration: ", toolboxConfiguration);
     console.log("isEqual(currentToolboxConfiguration, toolboxConfiguration): ", JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration));
-    if (JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration)) return;
     toolboxConfigurationRef.current = toolboxConfiguration;
+    if (JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration)) return;
     if (toolboxConfiguration && workspace && !workspaceConfiguration?.readOnly) {
       workspace.updateToolbox(toolboxConfiguration);
     }
