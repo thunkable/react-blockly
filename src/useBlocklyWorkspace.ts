@@ -74,9 +74,6 @@ const useBlocklyWorkspace = ({
 
   const toolboxConfigurationRef = React.useRef(toolboxConfiguration);
   React.useEffect(() => {
-    console.log("currentToolboxConfiguration: ", currentToolboxConfiguration);
-    console.log("toolboxConfiguration: ", toolboxConfiguration);
-    console.log("isEqual(currentToolboxConfiguration, toolboxConfiguration): ", JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration));
     toolboxConfigurationRef.current = toolboxConfiguration;
     if (JSON.stringify(currentToolboxConfiguration) === JSON.stringify(toolboxConfiguration)) return;
     if (toolboxConfiguration && workspace && !workspaceConfiguration?.readOnly) {
