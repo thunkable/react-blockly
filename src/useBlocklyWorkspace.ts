@@ -1,8 +1,10 @@
 import React from "react";
-import Blockly, { Workspace, WorkspaceSvg } from "blockly";
+import { Workspace, WorkspaceSvg } from "blockly";
 import { UseBlocklyProps } from "./BlocklyWorkspaceProps";
 
 import debounce from "./debounce";
+declare const window: any;
+const Blockly = window.Blockly;
 
 function importFromXml(
   xml: string,
@@ -75,7 +77,7 @@ const useBlocklyWorkspace = ({
     if (toolboxConfiguration && workspace && !workspaceConfiguration?.readOnly) {
       workspace.updateToolbox(toolboxConfiguration);
     }
-  }, [toolboxConfiguration, workspace, workspaceConfiguration]);
+  }, [toolboxConfiguration, workspaceConfiguration]);
 
   const onInjectRef = React.useRef(onInject);
   const onDisposeRef = React.useRef(onDispose);
