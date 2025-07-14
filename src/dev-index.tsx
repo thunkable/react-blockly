@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import Blockly from "blockly";
 import { javascriptGenerator } from "blockly/javascript";
 
@@ -117,8 +117,9 @@ const TestEditor = () => {
 
 window.addEventListener("load", () => {
   const editor = React.createElement(TestEditor);
-  const root = document.createElement("div");
-  document.body.appendChild(root);
+  const rootElement = document.createElement("div");
+  document.body.appendChild(rootElement);
 
-  ReactDOM.render(editor, root);
+  const root = createRoot(rootElement);
+  root.render(editor);
 });
